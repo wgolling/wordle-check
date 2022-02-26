@@ -1,5 +1,5 @@
 from pathlib import Path 
-from datetime import date
+from datetime import datetime
 
 def process_words(raw_answers_path):
     with open(raw_answers_path) as file:
@@ -13,14 +13,13 @@ def process_words(raw_answers_path):
 
 def _process_line(line):
     '''
-    line is of the form 'mm-dd-yyyy\t{game_number}\t{word}'
+    line is of the form 'mm/dd/yyyy\t{game_number}\t{word}'
     returns the date as a datetime.date object,
             the game number as an integer,
             the word as a string
     '''
     line_parts = line.split('\t')
-    date_parts = list(map(int, line_parts[0].split("/")))
-    date_obj = date(date_parts[2],date_parts[0],date_parts[1])
+    date_obj = datetime.strptime(line_parts[0], '%m/%d/%Y')
     game_number = int(line_parts[1])
     word = line_parts[2].strip()
     return date_obj,game_number,word
