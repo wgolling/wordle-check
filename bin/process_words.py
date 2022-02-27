@@ -46,5 +46,5 @@ def _digest_words_dict(words_dict):
 
 if __name__ == "__main__":
     raw_answers_path        = Path('.') / 'data' / 'raw_answers.txt'
-    processed_words_path    = Path('.') / 'data' / 'processed_words.py'
+    processed_words_path    = Path('.') / 'data' / 'processed_words.txt'
     process_words(raw_answers_path, processed_words_path)
