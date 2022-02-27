@@ -1,7 +1,6 @@
 from pathlib import Path 
 from datetime import datetime
 import json
-import hmac
 
 def process_words(raw_answers_path, processed_words_path):
     words_by_date = dict()
@@ -12,13 +11,8 @@ def process_words(raw_answers_path, processed_words_path):
             date_string,_,word = _process_line(line)
             words_by_date[date_string] = word
             line = file.readline()
-    # with open(processed_words_path, 'w') as file:
-    #     json.dump(words_by_date, file)
-    encrypted_dict = _digest_words_dict(words_by_date)
-    print(encrypted_dict)
-    with open(processed_words_path, 'wb') as file:
-        file.write(encrypted_dict)
-    
+    with open(processed_words_path, 'w') as file:
+        json.dump(words_by_date, file)
 
 def _process_line(line):
     '''
@@ -32,17 +26,6 @@ def _process_line(line):
     game_number = line_parts[1]
     word = line_parts[2].strip()
     return date_string,game_number,word
-
-def _digest_words_dict(words_dict):
-    '''
-    Returns the json representation of words_dict, encrypted into bytes with MD5.
-    '''
-    json_string = json.dumps(words_dict).encode()
-    digester = hmac.new("Dummy key, doesn't matter".encode())
-    digester.update(json_string)
-    return digester.digest()
-
-
 
 if __name__ == "__main__":
     raw_answers_path        = Path('.') / 'data' / 'raw_answers.txt'
