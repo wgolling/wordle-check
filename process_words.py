@@ -1,18 +1,16 @@
-from pathlib import Path 
 from datetime import datetime
-import json
+from lib.file_io import RawWords, save_words_dict
 
-def process_words(raw_answers_path, processed_words_path):
+def process_words():
     words_by_date = dict()
-    with open(raw_answers_path) as file:
+    with RawWords() as file:
         file.readline()                                                       # First line is just headings.
         line = file.readline()
         while line:
             date_string,_,word = _process_line(line)
             words_by_date[date_string] = word
             line = file.readline()
-    with open(processed_words_path, 'w') as file:
-        json.dump(words_by_date, file)
+    save_words_dict(words_by_date)
 
 def _process_line(line):
     '''
@@ -28,6 +26,4 @@ def _process_line(line):
     return date_string,game_number,word
 
 if __name__ == "__main__":
-    raw_answers_path        = Path('.') / 'data' / 'raw_answers.txt'
-    processed_words_path    = Path('.') / 'data' / 'processed_words.txt'
-    process_words(raw_answers_path, processed_words_path)
+    process_words()
