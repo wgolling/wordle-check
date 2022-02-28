@@ -1,3 +1,4 @@
 data/raw_answers.txt
 .vscode/*
 __pycache__
+*.pyc
