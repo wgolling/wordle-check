@@ -15,8 +15,8 @@ def process_words():
 def _process_line(line):
     '''
     Assumes line is of the form f'mm/dd/yyyy\t{game_number}\t{word}'
-    Returns strings representing the date,
-                                 the game,
+    Returns strings representing the date, in ISO format,
+                                 the game number,
                                  the word.
     '''
     line_parts = line.split('\t')
