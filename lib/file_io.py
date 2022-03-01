@@ -1,5 +1,7 @@
 '''
 Handles file operations.
+
+One of the main purposes of this module is to encapsulate file paths.
 '''
 
 from pathlib import Path
@@ -9,6 +11,9 @@ _RAW_WORDS_PATH         = Path('.') / 'data' / 'raw_answers.txt'
 _PROCESSED_WORDS_PATH   = Path('.') / 'data' / 'processed_words.txt'
 
 class RawWords():
+    '''
+    Basic context manager that loads the raw words file.
+    '''
 
     def __init__(self):
         self.file_obj = open(_RAW_WORDS_PATH)
