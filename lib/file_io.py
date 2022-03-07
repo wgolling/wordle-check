@@ -9,6 +9,7 @@ import json
 
 _RAW_WORDS_PATH         = Path('.') / 'data' / 'raw_answers.txt'
 _PROCESSED_WORDS_PATH   = Path('.') / 'data' / 'processed_words.txt'
+_INVERTED_WORDS_PATH    = Path('.') / 'data' / 'inverted_words.txt'
 
 class RawWords():
     '''
@@ -25,5 +26,12 @@ class RawWords():
         self.file_obj.close()
 
 def save_words_dict(words_dict):
-    with open(_PROCESSED_WORDS_PATH, 'w') as file:
-        json.dump(words_dict, file)
+    _save_to_file(words_dict, _PROCESSED_WORDS_PATH)
+
+def save_dates_by_words_dict(dates_by_words):
+    _save_to_file(dates_by_words, _INVERTED_WORDS_PATH)
+
+def _save_to_file(dict_, filepath):
+    with open(filepath, 'w') as file:
+        json.dump(dict_, file)
+

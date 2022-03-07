@@ -1,5 +1,5 @@
 from datetime import datetime
-from lib.file_io import RawWords, save_words_dict
+from lib.file_io import RawWords, save_words_dict, save_dates_by_words_dict
 
 def process_words():
     words_by_date = dict()
@@ -11,6 +11,9 @@ def process_words():
             words_by_date[date_string] = word
             line = file.readline()
     save_words_dict(words_by_date)
+    dates_by_words = _invert_dict(words_by_date)
+    save_dates_by_words_dict(dates_by_words)
+
 
 def _process_line(line):
     '''
@@ -24,6 +27,12 @@ def _process_line(line):
     game_number = line_parts[1]
     word = line_parts[2].strip()
     return date_string,game_number,word
+
+def _invert_dict(words_by_date):
+    dates_by_words = dict() 
+    for date_string, word in words_by_date.items():
+        dates_by_words[word] = date_string
+    return dates_by_words
 
 if __name__ == "__main__":
     process_words()
