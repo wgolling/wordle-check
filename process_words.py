@@ -23,7 +23,7 @@ def _process_line(line):
                                  the word.
     '''
     line_parts = line.split('\t')
-    date_string = datetime.strptime(line_parts[0], '%m/%d/%Y').isoformat()    # Convert datestring to ISO format.
+    date_string = datetime.strptime(line_parts[0], '%m/%d/%Y').date().isoformat()    # Convert datestring to ISO format.
     game_number = line_parts[1]
     word = line_parts[2].strip()
     return date_string,game_number,word

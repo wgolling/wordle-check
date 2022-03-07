@@ -35,3 +35,8 @@ def _save_to_file(dict_, filepath):
     with open(filepath, 'w') as file:
         json.dump(dict_, file)
 
+def load_inverted_words():
+    with open(_INVERTED_WORDS_PATH) as file:
+        d = json.load(file)
+    return d
+
