@@ -14,7 +14,6 @@ def process_words():
     dates_by_words = _invert_dict(words_by_date)
     save_dates_by_words_dict(dates_by_words)
 
-
 def _process_line(line):
     '''
     Assumes line is of the form f'mm/dd/yyyy\t{game_number}\t{word}'
@@ -23,7 +22,9 @@ def _process_line(line):
                                  the word.
     '''
     line_parts = line.split('\t')
-    date_string = datetime.strptime(line_parts[0], '%m/%d/%Y').date().isoformat()    # Convert datestring to ISO format.
+    date_string = datetime  .strptime(line_parts[0], '%m/%d/%Y')    \
+                            .date()                                 \
+                            .isoformat()                                      # Convert datestring to ISO format.
     game_number = line_parts[1]
     word = line_parts[2].strip()
     return date_string,game_number,word

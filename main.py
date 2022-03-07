@@ -13,7 +13,6 @@ def _query(word):
     today = date.today()
     return word_date < today
 
-    
 if __name__ == "__main__":
     args = sys.argv[1:]
     if len(args) == 0:

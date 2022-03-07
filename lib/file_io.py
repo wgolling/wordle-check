@@ -39,4 +39,3 @@ def load_inverted_words():
     with open(_INVERTED_WORDS_PATH) as file:
         d = json.load(file)
     return d
-
