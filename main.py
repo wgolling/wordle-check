@@ -11,7 +11,7 @@ def _query(word):
         return False
     word_date = date.fromisoformat(words_dict[word])
     today = date.today()
-    return word_date < today
+    return word_date if word_date < today else "Word unused"
 
 if __name__ == "__main__":
     args = sys.argv[1:]
