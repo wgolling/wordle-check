@@ -8,7 +8,7 @@ def _print_hello():
 def _query(word):
     words_dict = load_inverted_words()
     if word not in words_dict:
-        return False
+        return "Word unused"
     word_date = date.fromisoformat(words_dict[word])
     today = date.today()
     return word_date if word_date < today else "Word unused"
@@ -18,6 +18,6 @@ if __name__ == "__main__":
     if len(args) == 0:
         _print_hello()
     else:
-        word = args[0]
+        word = str(args[0])
         q = _query(word)
         print(q)
