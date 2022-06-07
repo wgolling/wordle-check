@@ -12,6 +12,7 @@ from cryptography.fernet import Fernet
 _RAW_WORDS_PATH         = Path('.') / 'data' / 'raw_answers.txt'
 _PROCESSED_WORDS_PATH   = Path('.') / 'data' / 'processed_words.txt'
 _INVERTED_WORDS_PATH    = Path('.') / 'data' / 'inverted_words.txt'
+_LETTER_STATS           = Path('.') / 'data' / 'letter_stats.txt'
 _CRYPT_PATH             = Path('.') / 'lib'  / 'crypt.key'
 
 class Crypto():
