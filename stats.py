@@ -7,7 +7,8 @@ max_date = "2027-10-21"
 data = dict(filter(lambda elem: elem[1] < max_date, data.items()))
 word_count = len(data)
 
-stats = defaultdict(lambda: defaultdict(int))
+int_dict_factory = lambda: defaultdict(int)
+stats = defaultdict(int_dict_factory)
 
 for word in data.keys():
     freq = defaultdict(int)
@@ -33,7 +34,6 @@ for c in ascii_lowercase:
         char_string = char_string + "   " + p    
     stats_string += char_string + "\n"
 
-print(stats_string)
 stats_file_path = file_io._LETTER_STATS
 
 with open(stats_file_path, 'w') as f:
