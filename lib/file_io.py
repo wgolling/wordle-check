@@ -6,14 +6,16 @@ handle encryption of the word dictionaries.
 '''
 
 from pathlib import Path
-import json
+import json, os
 from cryptography.fernet import Fernet
 
-_RAW_WORDS_PATH         = Path('.') / 'data' / 'raw_answers.txt'
-_PROCESSED_WORDS_PATH   = Path('.') / 'data' / 'processed_words.txt'
-_INVERTED_WORDS_PATH    = Path('.') / 'data' / 'inverted_words.txt'
-_LETTER_STATS           = Path('.') / 'data' / 'letter_stats.txt'
-_CRYPT_PATH             = Path('.') / 'lib'  / 'crypt.key'
+project_root = Path(os.path.abspath(__file__)).parents[1]
+
+_RAW_WORDS_PATH         = project_root / 'data' / 'raw_answers.txt'
+_PROCESSED_WORDS_PATH   = project_root / 'data' / 'processed_words.txt'
+_INVERTED_WORDS_PATH    = project_root / 'data' / 'inverted_words.txt'
+_LETTER_STATS           = project_root / 'data' / 'letter_stats.txt'
+_CRYPT_PATH             = project_root / 'lib'  / 'crypt.key'
 
 class Crypto():
     '''

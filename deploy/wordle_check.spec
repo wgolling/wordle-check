@@ -3,12 +3,17 @@
 
 block_cipher = None
 
+data_paths = [
+    ('..\\data\\inverted_words.txt', 'data'),
+    ('..\\lib\\crypt.key', 'lib')
+]
+
 
 a = Analysis(
     ['..\\main.py'],
     pathex=[],
     binaries=[],
-    datas=[],
+    datas=data_paths,
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
